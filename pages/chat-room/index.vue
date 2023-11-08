@@ -37,30 +37,17 @@ const post_message = async () => {
 </script>
 
 <template>
-  <UContainer>
-    <UCard class="my-10">
-      <div class="space-y-6">
-        <UCard class="ml-6 m-auto">
-          <div class="w-full flex justify-between">
-            <div class="flex items-center">
-              <a class="pl-5 whitespace-pre-wrap">聞きたいことは何ですか？ </a>
-            </div>
-          </div>
-        </UCard>
-        <!-- ↓コンポーネント化したい↓ -->
-        <div class="flex justify-between">
-          <UInput
-            v-model="question"
-            color="white"
-            variant="outline"
-            placeholder="メッセージを入力..."
-            class="w-5/6"
-            icon="i-heroicons-magnifying-glass-20-solid"
-            :loading="loading"
-          />
-          <UButton @click="post_message()"> 送信 </UButton>
-        </div>
+  <UCard class="my-10">
+    <div class="space-y-6">
+      <ResponseCard :content="'聞きたいことは何ですか？'" />
+      <div>
+        <QuestionForm
+          v-model="question"
+          :question="question"
+          :loading="loading"
+          :on_click="post_message"
+        />
       </div>
-    </UCard>
-  </UContainer>
+    </div>
+  </UCard>
 </template>
